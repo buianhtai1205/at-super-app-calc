@@ -1,0 +1,5 @@
+{
+  "name": "Bitcoin P2P Arbitrage Calculator",
+  "description": "Compare the cost of buying Bitcoin directly via P2P vs indirectly via USDT.",
+  "requestFramePermissions": []
+}
