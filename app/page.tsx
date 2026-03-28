@@ -42,18 +42,18 @@ export default function BitcoinCalculator() {
           classifies: ["mass", "profession", "fiat_trade"],
           tradedWith: false,
           followed: false,
-          transAmount: 20000000
+          transAmount: 200000000
         })
       });
       const data = await res.json();
       if (data && data.data && data.data.length > 0) {
         const prices = data.data.map((item: any) => parseFloat(item.adv.price));
         if (tradeType === 'SELL') {
-          // Merchant selling, user buying -> User wants lowest price
-          return Math.min(...prices);
-        } else {
-          // Merchant buying, user selling -> User wants highest price
+          // Get SELL ads (merchants selling) - For buy price, want HIGHEST (worst deal to compare against)
           return Math.max(...prices);
+        } else {
+          // Get BUY ads (merchants buying) - For sell price, want LOWEST (worst deal to compare against)
+          return Math.min(...prices);
         }
       }
     } catch (error) {
